@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Create Project - Growth Hacking Manager{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Create New Project</h2>
+    <p>Start tracking a new growth experiment</p>
+</div>
+
+<div class="form-container">
+    <form method="POST" class="project-form">
+        <div class="form-group">
+            <label for="name">Project Name *</label>
+            <input type="text" id="name" name="name" required
+                   placeholder="e.g., Email Campaign A/B Test">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3"
+                      placeholder="What is this project about?"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="goal">Goal</label>
+            <input type="text" id="goal" name="goal"
+                   placeholder="e.g., Increase conversion rate by 20%">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="target_metric">Target Metric</label>
+                <input type="text" id="target_metric" name="target_metric"
+                       placeholder="e.g., conversion_rate, users, revenue">
+            </div>
+
+            <div class="form-group">
+                <label for="target_value">Target Value</label>
+                <input type="number" id="target_value" name="target_value"
+                       step="0.01" placeholder="e.g., 1000">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Create Project</button>
+            <a href="{{ url_for('index') }}" class="btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<div class="help-section">
+    <h3>Examples</h3>
+    <div class="example-grid">
+        <div class="example-card">
+            <h4>A/B Testing</h4>
+            <p><strong>Name:</strong> Homepage Hero A/B Test</p>
+            <p><strong>Goal:</strong> Increase signup rate to 5%</p>
+            <p><strong>Metric:</strong> signup_rate = 0.05</p>
+        </div>
+        <div class="example-card">
+            <h4>Product Launch</h4>
+            <p><strong>Name:</strong> Q4 Premium Launch</p>
+            <p><strong>Goal:</strong> Acquire 500 premium users</p>
+            <p><strong>Metric:</strong> premium_users = 500</p>
+        </div>
+        <div class="example-card">
+            <h4>SEO Campaign</h4>
+            <p><strong>Name:</strong> Content Strategy 2025</p>
+            <p><strong>Goal:</strong> 200% increase in organic traffic</p>
+            <p><strong>Metric:</strong> organic_sessions = 15000</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

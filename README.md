@@ -1,6 +1,10 @@
 # Growth Hacking Project Manager
 
-A powerful CLI tool to manage and track your growth hacking projects, experiments, and metrics.
+A powerful tool to manage and track your growth hacking projects, experiments, and metrics.
+
+**Available in two interfaces:**
+- **Web Interface**: Beautiful browser-based dashboard with charts and visualizations
+- **CLI Tool**: Command-line interface for terminal power users
 
 ## Features
 
@@ -12,6 +16,27 @@ A powerful CLI tool to manage and track your growth hacking projects, experiment
 - **Status Management**: Organize projects by status (active, paused, completed)
 
 ## Quick Start
+
+### Web Interface (Recommended)
+
+```bash
+# Start the web server
+./start_web.sh
+
+# Then open your browser to:
+# http://localhost:5000
+```
+
+**Features:**
+- Interactive dashboard with statistics
+- Visual charts and graphs
+- Easy-to-use forms
+- Real-time growth calculations
+- No commands to memorize
+
+See [WEB_GUIDE.md](WEB_GUIDE.md) for detailed web interface documentation.
+
+### CLI Tool
 
 ```bash
 # Make the script executable
@@ -54,7 +79,8 @@ chmod +x growth_hacker.py
 
 ## Documentation
 
-See [USAGE.md](USAGE.md) for detailed documentation, examples, and best practices.
+- **[WEB_GUIDE.md](WEB_GUIDE.md)** - Complete web interface guide with screenshots and workflows
+- **[USAGE.md](USAGE.md)** - CLI tool documentation, examples, and best practices
 
 ## Use Cases
 
@@ -72,7 +98,8 @@ All data is stored locally in `~/.growth_hacking_projects.json` in JSON format.
 ## Requirements
 
 - Python 3.6+
-- No external dependencies (uses only Python standard library)
+- Flask 3.0+ (for web interface only)
+- CLI tool has no external dependencies
 
 ## Examples
 

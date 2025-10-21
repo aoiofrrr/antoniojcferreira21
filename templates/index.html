@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Growth Hacking Manager{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Your Growth Hacking Projects</h2>
+    <p>Track and manage all your growth experiments in one place</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-value">{{ stats.total }}</div>
+        <div class="stat-label">Total Projects</div>
+    </div>
+    <div class="stat-card active">
+        <div class="stat-icon">🚀</div>
+        <div class="stat-value">{{ stats.active }}</div>
+        <div class="stat-label">Active</div>
+    </div>
+    <div class="stat-card completed">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value">{{ stats.completed }}</div>
+        <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card paused">
+        <div class="stat-icon">⏸️</div>
+        <div class="stat-value">{{ stats.paused }}</div>
+        <div class="stat-label">Paused</div>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <a href="{{ url_for('filter_by_status', status='all') }}"
+       class="filter-btn {% if not filter or filter == 'all' %}active{% endif %}">All</a>
+    <a href="{{ url_for('filter_by_status', status='active') }}"
+       class="filter-btn {% if filter == 'active' %}active{% endif %}">Active</a>
+    <a href="{{ url_for('filter_by_status', status='paused') }}"
+       class="filter-btn {% if filter == 'paused' %}active{% endif %}">Paused</a>
+    <a href="{{ url_for('filter_by_status', status='completed') }}"
+       class="filter-btn {% if filter == 'completed' %}active{% endif %}">Completed</a>
+</div>
+
+{% if projects %}
+<div class="projects-grid">
+    {% for project in projects %}
+    <div class="project-card status-{{ project.status }}">
+        <div class="project-header">
+            <h3>
+                <a href="{{ url_for('view_project', project_id=project.id) }}">
+                    {{ project.name }}
+                </a>
+            </h3>
+            <span class="status-badge status-{{ project.status }}">{{ project.status }}</span>
+        </div>
+
+        {% if project.description %}
+        <p class="project-description">{{ project.description }}</p>
+        {% endif %}
+
+        {% if project.goal %}
+        <div class="project-goal">
+            <strong>Goal:</strong> {{ project.goal }}
+        </div>
+        {% endif %}
+
+        {% if project.target_metric and project.target_value %}
+        <div class="project-target">
+            <strong>Target:</strong> {{ project.target_metric }} = {{ project.target_value }}
+        </div>
+        {% endif %}
+
+        <div class="project-meta">
+            <span>Created: {{ project.created_at[:10] }}</span>
+            {% if project.metrics %}
+            <span>📈 {{ project.metrics|length }} metrics</span>
+            {% endif %}
+        </div>
+
+        <div class="project-actions">
+            <a href="{{ url_for('view_project', project_id=project.id) }}" class="btn-small">View Details</a>
+            <a href="{{ url_for('edit_project', project_id=project.id) }}" class="btn-small btn-secondary">Edit</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <div class="empty-icon">📊</div>
+    <h3>No projects yet</h3>
+    <p>Start tracking your growth experiments by creating your first project</p>
+    <a href="{{ url_for('create_project') }}" class="btn-primary">Create Your First Project</a>
+</div>
+{% endif %}
+{% endblock %}
