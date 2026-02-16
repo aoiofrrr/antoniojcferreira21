@@ -1,15 +1,5 @@
-👋 Hi, I’m António Ferreira
+hey you! welcome 👋
 
-Product Manager | Builder | Curious
+currently building products at the intersection of health tech, wearables, and behavioral science.
 
-
-Right now, designing and growing products at the intersection of health tech, wearables, and behavioral science.
-
-
-🧠 What drives me:
-
-- Turning messy product data into clear decisions (activation, retention, engagement).
-
-- Building 0 to 1 experiences.
-
-- Connecting creative and analytical worlds.
+this is where I experiment, prototype, and occasionally build things that probably don't scale (yet).
